@@ -904,8 +904,8 @@ footer {
     <p class="cta-s">We will tell you which episodes are clean and which should never go into training</p>
     <div class="eform">
       <div class="eform-row" id="eform-row">
-        <input class="eform-input" type="email" placeholder="your@email.com" id="eform-input">
-        <button class="eform-btn" id="eform-btn">get early access</button>
+        <input class="eform-input" type="email" placeholder="your@email.com" id="signup-input">
+        <button class="eform-btn" id="signup-btn">get early access</button>
       </div>
       <div class="eform-note">No spam. Early clients get one free annotated session.</div>
     </div>
@@ -1059,22 +1059,23 @@ document.querySelectorAll('.sl, .sh, .ps, .cta-h, .cta-s, .eform, .term, .pills'
 });
 
 // ── EMAIL FORM ────────────────────────────────────────────────────────────────
-document.getElementById('eform-btn').addEventListener('click', () => {
-  const input = document.getElementById('eform-input');
-  const val   = input.value.trim();
-  if (!val.includes('@')) {
-    input.style.borderColor = 'rgba(255,80,80,0.4)';
-    setTimeout(() => { input.style.borderColor = ''; }, 1200);
-    return;
+document.getElementById('signup-btn').addEventListener('click', async () => {
+  const email = document.getElementById('signup-input').value.trim();
+  if (!email || !email.includes('@')) return;
+  const btn = document.getElementById('signup-btn');
+  btn.textContent = 'sending...';
+  btn.disabled = true;
+  try {
+    await fetch('/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({email})
+    });
+    document.querySelector('.eform').outerHTML = '<p style="font-family:DM Mono,monospace;font-size:11px;color:var(--teal);letter-spacing:.05em;">We will be in touch — Haptal team</p>';
+  } catch {
+    btn.textContent = 'get early access';
+    btn.disabled = false;
   }
-  const row  = document.getElementById('eform-row');
-  const note = row.parentElement.querySelector('.eform-note');
-  row.style.display  = 'none';
-  note.style.display = 'none';
-  const msg = document.createElement('div');
-  msg.className   = 'eform-success';
-  msg.textContent = 'We will be in touch — Haptal team';
-  row.parentElement.prepend(msg);
 });
 </script>
 
