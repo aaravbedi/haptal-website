@@ -615,7 +615,7 @@ section {
   width: 100%;
 }
 
-.eform-input {
+.ein {
   flex: 1;
   font-family: 'DM Mono', monospace;
   font-size: 11px;
@@ -629,10 +629,10 @@ section {
   transition: border-color 0.2s ease;
 }
 
-.eform-input::placeholder { color: var(--muted2); }
-.eform-input:focus { border-color: rgba(29,158,117,0.35); }
+.ein::placeholder { color: var(--muted2); }
+.ein:focus { border-color: rgba(29,158,117,0.35); }
 
-.eform-btn {
+.ebtn {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   color: #060809;
@@ -646,7 +646,7 @@ section {
   transition: background 0.2s ease;
 }
 
-.eform-btn:hover { background: var(--teal-l); }
+.ebtn:hover { background: var(--teal-l); }
 
 .eform-note {
   font-family: 'DM Mono', monospace;
@@ -903,10 +903,12 @@ footer {
     <h2 class="cta-h">Your robots are generating data right now</h2>
     <p class="cta-s">We will tell you which episodes are clean and which should never go into training</p>
     <div class="eform">
-      <div class="eform-row" id="eform-row">
-        <input class="eform-input" type="email" placeholder="your@email.com" id="signup-input">
-        <button class="eform-btn" id="signup-btn">get early access</button>
-      </div>
+      <form name="haptal-signups" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display:flex;gap:0;max-width:340px;width:100%;">
+        <input type="hidden" name="form-name" value="haptal-signups">
+        <input type="hidden" name="bot-field">
+        <input class="ein" type="email" name="email" placeholder="your@email.com" required>
+        <button class="ebtn" type="submit">get early access</button>
+      </form>
       <div class="eform-note">No spam. Early clients get one free annotated session.</div>
     </div>
   </div>
@@ -943,7 +945,7 @@ document.addEventListener('mousemove', e => {
   dot.style.top  = my + 'px';
 });
 
-const hoverTargets = '.btn-primary, .ps, .pill, .eform-btn';
+const hoverTargets = '.btn-primary, .ps, .pill, .ebtn';
 document.querySelectorAll(hoverTargets).forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cur-hover'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('cur-hover'));
@@ -1058,25 +1060,6 @@ document.querySelectorAll('.sl, .sh, .ps, .cta-h, .cta-s, .eform, .term, .pills'
   obs.observe(el);
 });
 
-// ── EMAIL FORM ────────────────────────────────────────────────────────────────
-document.getElementById('signup-btn').addEventListener('click', async () => {
-  const email = document.getElementById('signup-input').value.trim();
-  if (!email || !email.includes('@')) return;
-  const btn = document.getElementById('signup-btn');
-  btn.textContent = 'sending...';
-  btn.disabled = true;
-  try {
-    await fetch('/signup', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({email})
-    });
-    document.querySelector('.eform').outerHTML = '<p style="font-family:DM Mono,monospace;font-size:11px;color:var(--teal);letter-spacing:.05em;">We will be in touch — Haptal team</p>';
-  } catch {
-    btn.textContent = 'get early access';
-    btn.disabled = false;
-  }
-});
 </script>
 
 </body>
