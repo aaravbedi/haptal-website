@@ -706,3 +706,230 @@ footer {
 }
 </style>
 </head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- CANVAS -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="logo-grid">
+      <div class="c ct"></div>
+      <div class="c cd"></div>
+      <div class="c cdd"></div>
+      <div class="c cdd"></div>
+      <div class="c ct"></div>
+      <div class="c cd"></div>
+      <div class="c cd"></div>
+      <div class="c cdd"></div>
+      <div class="c ct"></div>
+    </div>
+    <div class="wordmark">Haptal<span>.</span></div>
+  </div>
+  <div class="nav-right">haptal.ai</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">robotics annotation infrastructure</div>
+    <h1>
+      <span class="h1-line"><span class="h1-inner d1">The data layer</span></span>
+      <span class="h1-line"><span class="h1-inner d2">robots <span class="h1-teal">learn</span></span></span>
+      <span class="h1-line"><span class="h1-inner d3"><span class="h1-ghost">from</span></span></span>
+    </h1>
+    <p class="hero-sub">Annotation and behavior failure tagging for robot training pipelines</p>
+    <div class="hero-bottom">
+      <a href="#cta" class="btn-primary">get early access <span class="btn-arrow">→</span></a>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-num"><span id="s1">0</span><span class="suf">%</span></div>
+          <div class="stat-label">accuracy</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span id="s2">0</span><span class="suf">x</span></div>
+          <div class="stat-label">faster</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span id="s3">0</span><span class="suf">%</span></div>
+          <div class="stat-label">cheaper</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div id="ticker">
+    <div class="ticker-track">
+      <span class="ticker-item">3D LiDAR</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Egocentric</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Teleoperation</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Failure Taxonomy</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Policy Filtering</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">LeRobot v2</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">RLDS</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">HDF5</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Open X-Embodiment</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">grasp_slip</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">object_drop</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">overcorrect</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">BiLSTM</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Quality Score</span><span class="ticker-sep">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">3D LiDAR</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Egocentric</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Teleoperation</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Failure Taxonomy</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Policy Filtering</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">LeRobot v2</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">RLDS</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">HDF5</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Open X-Embodiment</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">grasp_slip</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">object_drop</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">overcorrect</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">BiLSTM</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Quality Score</span><span class="ticker-sep">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE SECTION -->
+<section id="pipeline">
+  <div class="section-wrap">
+    <div class="sl">how it works</div>
+    <div class="sh">Raw data in. Training-ready out.</div>
+    <div class="pipeline-grid">
+
+      <div class="ps">
+        <div class="ps-bg"></div>
+        <div class="ps-line"></div>
+        <div class="ps-num">01</div>
+        <div class="ps-title">Ingest</div>
+        <div class="ps-body">Any format off your robot.</div>
+        <span class="ps-tag">any format</span>
+      </div>
+
+      <div class="ps">
+        <div class="ps-bg"></div>
+        <div class="ps-line"></div>
+        <div class="ps-num">02</div>
+        <div class="ps-title">Pre-label</div>
+        <div class="ps-body">Open source models run first. High accuracy before human review.</div>
+        <span class="ps-tag">AI-first</span>
+      </div>
+
+      <div class="ps ps-engine">
+        <div class="ps-bg"></div>
+        <div class="ps-line"></div>
+        <div class="ps-num">03</div>
+        <div class="ps-title">Haptal Engine</div>
+        <div class="ps-body">Our proprietary core.</div>
+        <div class="ps-chips">
+          <div class="ps-chip">failure detection</div>
+          <div class="ps-chip">quality scoring</div>
+          <div class="ps-chip">policy filtering</div>
+          <div class="ps-chip">anomaly modeling</div>
+        </div>
+      </div>
+
+      <div class="ps">
+        <div class="ps-bg"></div>
+        <div class="ps-line"></div>
+        <div class="ps-num">04</div>
+        <div class="ps-title">Human review</div>
+        <div class="ps-body">Experts verify only what the model flags.</div>
+        <span class="ps-tag">verified</span>
+      </div>
+
+      <div class="ps">
+        <div class="ps-bg"></div>
+        <div class="ps-line"></div>
+        <div class="ps-num">05</div>
+        <div class="ps-title">Delivery</div>
+        <div class="ps-body">Your format. Failure tags embedded. Plug in and train.</div>
+        <span class="ps-tag">training ready</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OUTPUT SECTION -->
+<section id="output">
+  <div class="section-wrap" style="padding-top:0;">
+    <div class="sl">output</div>
+    <div class="sh">Your format. Zero conversion.</div>
+
+    <div class="term">
+      <div class="term-bar">
+        <div class="term-dot" style="background:#ff5f57;"></div>
+        <div class="term-dot" style="background:#febc2e;"></div>
+        <div class="term-dot" style="background:#28c840;"></div>
+        <span class="term-filename">train.py</span>
+      </div>
+      <div class="term-body">
+        <div><span class="tc"># zero changes to your training script</span></div>
+        <div>&nbsp;</div>
+        <div><span class="tc-tl">LeRobotDataset</span>(<span class="tc-str">"haptal/your_robot"</span>)</div>
+        <div>&nbsp;</div>
+        <div><span class="tc"># use_for_policy  →  true / false</span></div>
+        <div><span class="tc"># failure_tag     →  grasp_slip | object_drop | null</span></div>
+        <div><span class="tc"># quality_score   →  0.0 – 1.0</span></div>
+        <div>&nbsp;</div>
+        <div>clean = dataset.filter(<span class="tc-kw">lambda</span> ep: ep[<span class="tc-str">"use_for_policy"</span>])</div>
+        <div><span class="tc-tl">train_policy</span>(clean)</div>
+      </div>
+    </div>
+
+    <div class="pills">
+      <span class="pill">LeRobot v2</span>
+      <span class="pill">RLDS</span>
+      <span class="pill">HDF5</span>
+      <span class="pill">Zarr</span>
+      <span class="pill">Open X-Embodiment</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section id="cta">
+  <div class="section-wrap">
+    <h2 class="cta-h">Your robots are generating data right now</h2>
+    <p class="cta-s">We will tell you which episodes are clean and which should never go into training</p>
+    <div class="eform">
+      <div class="eform-row" id="eform-row">
+        <input class="eform-input" type="email" placeholder="your@email.com" id="eform-input">
+        <button class="eform-btn" id="eform-btn">get early access</button>
+      </div>
+      <div class="eform-note">No spam. Early clients get one free annotated session.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="logo-grid-sm">
+      <div class="c ct"></div>
+      <div class="c cd"></div>
+      <div class="c cdd"></div>
+      <div class="c cdd"></div>
+      <div class="c ct"></div>
+      <div class="c cd"></div>
+      <div class="c cd"></div>
+      <div class="c cdd"></div>
+      <div class="c ct"></div>
+    </div>
+    <div class="footer-wordmark">Haptal<span>.</span></div>
+  </div>
+  <div class="footer-right">© 2026 Haptal</div>
+</footer>
+
+</body>
+</html>
